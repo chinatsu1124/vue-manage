@@ -2,7 +2,8 @@ import Vue from 'vue'
 import { Button, Select, Container, Header, Aside, Main, Menu, Submenu, MenuItemGroup, MenuItem, Dropdown, DropdownMenu, DropdownItem } from 'element-ui'
 import App from './App.vue'
 import 'element-ui/lib/theme-chalk/index.css'
-
+import './assets/less/index.less'
+import store from '../store'
 import router from '../router'
 
 Vue.use(Button)
@@ -21,6 +22,7 @@ Vue.use(DropdownItem)
 Vue.config.productionTip = false
 
 new Vue({
+  store,
   router,
   el: '#app',
   render: h => h(App),

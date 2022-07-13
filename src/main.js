@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import { Button, Select, Container, Header, Aside, Main, Menu, Submenu, MenuItemGroup, MenuItem, Dropdown, DropdownMenu, DropdownItem } from 'element-ui'
+import { Button, Select, Container, Header, Aside, Main, Menu, Submenu, MenuItemGroup, MenuItem, Dropdown, DropdownMenu, DropdownItem, Row, Col, Card } from 'element-ui'
 import App from './App.vue'
 import 'element-ui/lib/theme-chalk/index.css'
 import './assets/less/index.less'
@@ -19,6 +19,9 @@ Vue.use(MenuItem)
 Vue.use(Dropdown)
 Vue.use(DropdownMenu)
 Vue.use(DropdownItem)
+Vue.use(Row)
+Vue.use(Col)
+Vue.use(Card)
 Vue.config.productionTip = false
 
 new Vue({

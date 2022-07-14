@@ -5,6 +5,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import './assets/less/index.less'
 import store from '../store'
 import router from '../router'
+import '../api/mock.js'
 // import http from 'axios'
 
 Vue.use(Button)

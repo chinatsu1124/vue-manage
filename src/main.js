@@ -5,6 +5,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import './assets/less/index.less'
 import store from '../store'
 import router from '../router'
+// import http from 'axios'
 
 Vue.use(Button)
 Vue.use(Select)
@@ -24,6 +25,9 @@ Vue.use(Col)
 Vue.use(Card)
 Vue.use(Table)
 Vue.use(TableColumn)
+
+// Vue.prototype.$http = http
+
 Vue.config.productionTip = false
 
 new Vue({

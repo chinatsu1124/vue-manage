@@ -1,13 +1,12 @@
 <template>
   <header>
     <div class="l-content">
-      <el-button
-        @click="handleMenu"
-        plain
-        icon="el-icon-menu"
-        size="mini"
-      ></el-button>
-      <h3 style="color: #fff">首页</h3>
+      <el-button @click="handleMenu" plain icon="el-icon-menu" size="mini"></el-button>
+      <!-- <h3 style="color: #fff">首页</h3> -->
+      <el-breadcrumb separator="/">
+        <el-breadcrumb-item v-for="item in tags" :key="item.path" :to="{ path: item.path }">{{ item.label }}
+        </el-breadcrumb-item>
+      </el-breadcrumb>
     </div>
     <div class="r-content">
       <el-dropdown trigger="click" size="mini">
@@ -21,6 +20,7 @@
   </header>
 </template>
 <script>
+import { mapState } from 'vuex';
 export default {
   name: "CommonHeader",
   data() {
@@ -33,6 +33,11 @@ export default {
       this.$store.commit("collapseMenu");
     },
   },
+  computed: {
+    ...mapState({
+      tags: state => state.tab.tabsList
+    })
+  }
 };
 </script>
 <style lang="less" scoped>
@@ -58,5 +63,15 @@ header {
     height: 40px;
     border-radius: 50%;
   }
+}
+
+// style使用了scoped选项后无法穿透第三方组件的子组件，需使用::v-deep来进行穿透
+.el-breadcrumb ::v-deep .el-breadcrumb__inner.is-link {
+  color: #606266;
+  font-weight: 400;
+}
+
+.el-breadcrumb ::v-deep .el-breadcrumb__item:last-child .el-breadcrumb__inner {
+  color: #ffffff;
 }
 </style>

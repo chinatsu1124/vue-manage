@@ -1,14 +1,14 @@
 <template>
     <div class="tabs">
         <el-tag v-for="(tag, index) in tags" :key="tag.name" :closable="tag.name !== 'home'"
-            :effect="$route.name === tag.name ? 'dark' : 'plain'" @click="changeMenu(tag)"
-            @close="handleClose(tag, index)" size="small">
+            :effect="$route.name === tag.name ? 'dark' : 'plain'" @click="changeMenu(tag, index)"
+            @close="handleClose(tag)" size="small">
             {{ tag.label }}
         </el-tag>
     </div>
 </template>
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 export default {
     name: 'ComminTag',
     data() {
@@ -22,12 +22,40 @@ export default {
         })
     },
     methods: {
-        changeMenu() {
-
+        ...mapMutations({
+            close: 'closeTag'
+        }),
+        changeMenu(item) {
+            this.$router.push({ name: item.name })
         },
-        handleClose() {
-
+        handleClose(tag, index) {
+            const lenth = this.tags.lenth - 1
+            this.close(tag)
+            // this.$store.commit("closeTag", tag.name);
+            if (tag.name !== this.$route.name) {
+                return
+            }
+            if (index === lenth) {
+                this.$router.push({
+                    name: this.tags[index - 1].name
+                })
+            }
+            else {
+                this.$router.push({
+                    name: this.tags[index - 1].name
+                })
+            }
         }
     }
 }
 </script>
+<style lang="less" scoped>
+.tabs {
+    padding: 20px;
+
+    .el-tag {
+        margin-right: 15px;
+        cursor: pointer;
+    }
+}
+</style>

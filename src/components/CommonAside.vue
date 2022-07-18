@@ -96,10 +96,14 @@ export default {
       console.log(key, keyPath);
     },
     clickMenu(item) {
-      this.$router.push({
-        name: item.name,
-      });
-      this.$store.commit('selectMenu', item)
+      if (item.name === this.$route.name) {
+        return
+      } else {
+        this.$router.push({
+          name: item.name,
+        });
+        this.$store.commit('selectMenu', item)
+      }
     },
   },
   computed: {

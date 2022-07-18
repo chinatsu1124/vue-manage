@@ -1,61 +1,58 @@
 <template>
-    <div class="tabs">
-        <el-tag v-for="(tag, index) in tags" :key="tag.name" :closable="tag.name !== 'home'"
-            :effect="$route.name === tag.name ? 'dark' : 'plain'" @click="changeMenu(tag, index)"
-            @close="handleClose(tag)" size="small">
-            {{ tag.label }}
-        </el-tag>
-    </div>
+  <div class="tabs">
+    <el-tag v-for="(tag, index) in tags" :key="tag.name" :closable="tag.name !== 'home'"
+            :effect="$route.name === tag.name ? 'dark' : 'plain'" @click="changeMenu(tag)"
+            @close="handleClose(tag, index)" size="small">
+      {{ tag.label }}
+    </el-tag>
+  </div>
 </template>
 <script>
-import { mapState, mapMutations } from 'vuex'
-export default {
-    name: 'ComminTag',
-    data() {
-        return {
+import {mapState, mapMutations} from 'vuex'
 
-        }
+export default {
+  name: 'CommonTag',
+  data() {
+    return {}
+  },
+  computed: {
+    ...mapState({
+      tags: state => state.tab.tabsList
+    })
+  },
+  methods: {
+    ...mapMutations({
+      close: 'closeTag'
+    }),
+    changeMenu(item) {
+      this.$router.push({name: item.name})
     },
-    computed: {
-        ...mapState({
-            tags: state => state.tab.tabsList
+    handleClose(tag, index) {
+      const length = this.tags.length - 1
+      this.close(tag)
+      if (tag.name !== this.$route.name) {
+        return
+      }
+      if (index === length) {
+        this.$router.push({
+          name: this.tags[index - 1].name
         })
-    },
-    methods: {
-        ...mapMutations({
-            close: 'closeTag'
-        }),
-        changeMenu(item) {
-            this.$router.push({ name: item.name })
-        },
-        handleClose(tag, index) {
-            const lenth = this.tags.lenth - 1
-            this.close(tag)
-            // this.$store.commit("closeTag", tag.name);
-            if (tag.name !== this.$route.name) {
-                return
-            }
-            if (index === lenth) {
-                this.$router.push({
-                    name: this.tags[index - 1].name
-                })
-            }
-            else {
-                this.$router.push({
-                    name: this.tags[index - 1].name
-                })
-            }
-        }
+      } else {
+        this.$router.push({
+          name: this.tags[index].name
+        })
+      }
     }
+  }
 }
 </script>
 <style lang="less" scoped>
 .tabs {
-    padding: 20px;
+  padding: 20px;
 
-    .el-tag {
-        margin-right: 15px;
-        cursor: pointer;
-    }
+  .el-tag {
+    margin-right: 15px;
+    cursor: pointer;
+  }
 }
 </style>

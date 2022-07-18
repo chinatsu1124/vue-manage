@@ -1,5 +1,5 @@
 <template>
-  <el-container style="height: ">
+  <el-container style="height: 100%">
     <el-aside width="auto" style="overflow: visible">
       <common-aside></common-aside>
     </el-aside>

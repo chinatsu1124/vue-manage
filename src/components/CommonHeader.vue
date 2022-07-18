@@ -10,7 +10,7 @@
     </div>
     <div class="r-content">
       <el-dropdown trigger="click" size="mini">
-        <span><img :src="userImg" class="user" /></span>
+        <span><img :src="userImg" class="user"/></span>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item>个人中心</el-dropdown-item>
           <el-dropdown-item>退出</el-dropdown-item>
@@ -20,7 +20,8 @@
   </header>
 </template>
 <script>
-import { mapState } from 'vuex';
+import {mapState} from 'vuex';
+
 export default {
   name: "CommonHeader",
   data() {
@@ -65,13 +66,13 @@ header {
   }
 }
 
-// style使用了scoped选项后无法穿透第三方组件的子组件，需使用::v-deep来进行穿透
-.el-breadcrumb ::v-deep .el-breadcrumb__inner.is-link {
+// style使用了scoped选项后无法穿透第三方组件的子类，需使用:deep()来进行穿透
+.el-breadcrumb :deep(.el-breadcrumb__inner.is-link) {
   color: #606266;
   font-weight: 400;
 }
 
-.el-breadcrumb ::v-deep .el-breadcrumb__item:last-child .el-breadcrumb__inner {
+.el-breadcrumb :deep(.el-breadcrumb__item:last-child .el-breadcrumb__inner) {
   color: #ffffff;
 }
 </style>

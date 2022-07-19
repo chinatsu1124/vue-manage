@@ -1,12 +1,12 @@
 import Vue from 'vue'
-import { Button, Select, Container, Header, Aside, Main, Menu, Submenu, MenuItemGroup, MenuItem, Dropdown, DropdownMenu, DropdownItem, Row, Col, Card, Table, TableColumn, Breadcrumb, BreadcrumbItem, Tag } from 'element-ui'
+import { Button, Select, Container, Header, Aside, Main, Menu, Submenu, MenuItemGroup, MenuItem, Dropdown, DropdownMenu, DropdownItem, Row, Col, Card, Table, TableColumn, Breadcrumb, BreadcrumbItem, Tag, Form, FormItem, Input, Option, Switch, DatePicker, Dialog } from 'element-ui'
 import App from './App.vue'
 import 'element-ui/lib/theme-chalk/index.css'
 import './assets/less/index.less'
 import store from '../store'
 import router from '../router'
 import '../api/mock.js'
-// import http from 'axios'
+import http from 'axios'
 
 Vue.use(Button)
 Vue.use(Select)
@@ -29,8 +29,15 @@ Vue.use(TableColumn)
 Vue.use(Breadcrumb)
 Vue.use(BreadcrumbItem)
 Vue.use(Tag)
+Vue.use(Form)
+Vue.use(FormItem)
+Vue.use(Input)
+Vue.use(Option)
+Vue.use(Switch)
+Vue.use(DatePicker)
+Vue.use(Dialog)
 
-// Vue.prototype.$http = http
+Vue.prototype.$http = http
 
 Vue.config.productionTip = false
 

@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import { Button, Select, Container, Header, Aside, Main, Menu, Submenu, MenuItemGroup, MenuItem, Dropdown, DropdownMenu, DropdownItem, Row, Col, Card, Table, TableColumn, Breadcrumb, BreadcrumbItem, Tag, Form, FormItem, Input, Option, Switch, DatePicker, Dialog, Pagination } from 'element-ui'
+import { Button, Select, Container, Header, Aside, Main, Menu, Submenu, MenuItemGroup, MenuItem, Dropdown, DropdownMenu, DropdownItem, Row, Col, Card, Table, TableColumn, Breadcrumb, BreadcrumbItem, Tag, Form, FormItem, Input, Option, Switch, DatePicker, Dialog, Pagination, MessageBox, Message } from 'element-ui'
 import App from './App.vue'
 import 'element-ui/lib/theme-chalk/index.css'
 import './assets/less/index.less'
@@ -39,8 +39,8 @@ Vue.use(Dialog)
 Vue.use(Pagination)
 
 Vue.prototype.$http = http
-// Vue.prototype.$message = Message 
-// Vue.prototype.$confirm = MessageBox.confirm
+Vue.prototype.$message = Message
+Vue.prototype.$confirm = MessageBox.confirm
 Vue.config.productionTip = false
 
 new Vue({

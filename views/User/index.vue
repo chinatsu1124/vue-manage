@@ -55,13 +55,13 @@ export default {
             },
             {
               label: '女',
-              value: 2
+              value: 0
             }
           ]
         },
         {
-          model: 'brith',
-          label: '年出生日期',
+          model: 'birth',
+          label: '出生日期',
           type: 'date'
         },
         {
@@ -98,7 +98,7 @@ export default {
           label: "年龄"
         },
         {
-          prop: "sex",
+          prop: "sexLabel",
           label: "性别"
         },
         {
@@ -157,7 +157,7 @@ export default {
         type: "warning"
       }).then(() => {
         const id = row.id
-        this.$http.get("user/del", {
+        this.$http.post("user/del", {
           params: { id }
         }).then(() => {
           this.$message({
@@ -169,7 +169,6 @@ export default {
       })
     },
     getList(name = '') {
-      console.log(this.config.page);
       this.config.loading = true
       name ? (this.config.page = 1) : ''
       getUser({

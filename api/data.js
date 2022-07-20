@@ -22,3 +22,11 @@ export const getUser = (params) => {
         params
     })
 }
+
+// export const getMenu = (param) => {
+//     return axios.request({
+//         url: '/permisson/getMenu',
+//         method: 'post',
+//         data: param
+//     })
+// }

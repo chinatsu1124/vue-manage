@@ -41,7 +41,7 @@ export default {
             state.menu = []
             Cookie.remove('menu')
         },
-        addMenu(state, val) {
+        addMenu(state, router) {
             if (!Cookie.get('menu')) {
                 return
             }
@@ -54,15 +54,16 @@ export default {
                         item.component = () => import(`../views/${item.url}`)
                         return item
                     })
+                    console.log(item.children);
                     menuArray.push(...item.children)
                 } else {
                     item.component = () => import(`../views/${item.url}`)
-                    menuArray.push(...item.children)
+                    menuArray.push(item)
                 }
             })
             // 路由的动态添加
             menuArray.forEach(item => {
-                router.addRoute('')
+                router.addRoute('Main', item)
             })
         }
     }

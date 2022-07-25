@@ -148,7 +148,7 @@ export default {
     editUser(row) {
       this.operateType = 'edit'
       this.isShow = true
-      this.operateForm = row
+      this.operateForm = {...row}
     },
     delUser(row) {
       this.$confirm("此操作将永久删除该组件，是否继续？", "提示", {

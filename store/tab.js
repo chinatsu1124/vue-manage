@@ -65,6 +65,9 @@ export default {
             menuArray.forEach(item => {
                 router.addRoute('Main', item)
             })
+        },
+        clearTabsList(state){
+            const delTabs = state.tabsList.splice(1)
         }
     }
 }

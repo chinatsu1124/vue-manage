@@ -36,6 +36,7 @@ export default {
     logOut() {
       this.$store.commit('clearToken')
       this.$store.commit('clearMenu')
+      this.$store.commit('clearTabsList')
       this.$router.push("/login")
       console.log(this.$route);
     }
